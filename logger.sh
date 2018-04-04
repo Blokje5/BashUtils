@@ -27,14 +27,16 @@ info_level=3
 debug_level=4
 trace_level=5
 
-# Log message
-# Usage: log 1 message
+# Private function Log message
+# Usage: 
+# local __message="log message";
+# log 1
 # Return: Unit
 log() {
     local verbosity=$(__verbosity_level)
     # Only log if log verbosity is higher then verbosity level
     if [ $verbosity -ge $1 ]; then
-        local logmessage=$(__log_format $1 $2)
+        local logmessage=$(__log_format $1 "${__message}")
         #if LOGFILE is not empty or space, append
         if $(is_string_non_empty $LOGFILE); 
             then echo -e  $logmessage >> $LOGFILE
@@ -46,11 +48,13 @@ log() {
 }
 
 # Helper functions
-error() { log 1 $1; }
-warn() { log 2 $1; }
-info() { log 3 $1; }
-debug() { log 4 $1; }
-trace() { log 5 $1; }
+# Usage:
+# function logMessage
+error() { local __message=${*}; log 1; }
+warn() { local __message=${*}; log 2; }
+info() { local __message=${*}; log 3; }
+debug() { local __message=${*}; log 4; }
+trace() { local __message=${*}; log 5; }
 
 # Private function, format log
 __log_format() {

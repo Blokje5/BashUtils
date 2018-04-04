@@ -19,10 +19,10 @@
 # Usage: string_non_empty $string
 # Return: Boolean
 is_var_set() {
-    if [ -z ${1+x} ]; 
-        then echo false
+    if [ ! -z ${1+x} ]; 
+        then echo true
     else    
-        echo true
+        echo false
     fi
 }
 
