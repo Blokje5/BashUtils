@@ -14,6 +14,10 @@
 # * Lennard Eijsackers
 # ##################################################
 
+#Optional global variables
+#LOGFILE: Location of file to place logs in
+#VERBOSITY: Int level from 0-5 to indicate verbosity to log on
+
 # Source utilities
 source $(pwd)/var-utils.sh #variable utilities
 source $(pwd)/string-utils.sh #string utilities

@@ -19,7 +19,7 @@
 # Usage: command_exists $command
 # Return: Boolean
 command_exists() {
-  if [ "$(type -P "$1")" ]; 
+  if [ ! -z "$(type -P "$1")" ]; 
     then echo true
   else
     echo false

@@ -26,7 +26,7 @@ source $(pwd)/logger.sh #logger
 source $(pwd)/cli-utils.sh #cli utilities
 
 brew_installed() {
-    if [[ $(command_exists 'brew') ]];
+    if $(command_exists 'brew');
         then echo true
     else
         echo false    
@@ -40,13 +40,15 @@ install_brew() {
         info "Brew is already installed"
     else
         debug "seeking confirmation for brew installation"
-        if $(forceable_confirmation "Install Homebrew?"); 
+        forceable_confirmation "Install Homebrew?"
+        if $(is_confirmed); 
         then
             if [[ ! $(command_exists 'gcc') ]];
             then
                 debug "seeking confirmation for Xcode installation"
                 info "XCode is needed before Homebrew can be installed"
-                if $(forceable_confirmation "Install XCode?"); 
+                forceable_confirmation "Install XCode?"
+                if $(is_confirmed); 
                 then
                     trace "Xcode install"
                     xcode-select --install
@@ -56,11 +58,11 @@ install_brew() {
                     debug "user declined installation"
                     exit 1
                 fi
-                trace "Homebrew install"
-                ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-                trace "Homebrew install ended"
-                # TODO Brew Taps?
             fi    
+            # TODO Brew Taps?
+            trace "Homebrew install"
+            ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+            trace "Homebrew install ended"
         else
             # TODO neat exit
             debug "user declined installation"

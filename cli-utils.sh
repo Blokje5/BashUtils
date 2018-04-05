@@ -42,24 +42,26 @@ is_confirmed() {
 # Ask a user for confirmation
 # Usage: 
 # seek_confirmation "string message as question"
+# if $(is_confirmed); then
 # Return: Boolean
 seek_confirmation() {
     echo "$@"
     read -p " (y/n) " -n 1 user_reply
     echo ""
-    is_confirmed
 }
+
+#TODO forceable needs to be changed in forceable confirmation
 
 # Ask a user for confirmation but checks for FORCED variable
 # Usage: 
 # forceable_confirmation "string message as question"
+# if $(is_confirmed); then
 # Return: Boolean
 forceable_confirmation() {
     if $(is_var_set $FORCED); 
     then
         echo true
     else
-        seek_confirmation "$1"
-        is_confirmed
+        seek_confirmation "$@"
     fi        
 }
