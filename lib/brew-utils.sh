@@ -20,13 +20,8 @@
 # * cli-utils.sh
 # ##################################################
 
-# Source utilities
-source $(pwd)/command-utils.sh #command utilities
-source $(pwd)/logger.sh #logger
-source $(pwd)/cli-utils.sh #cli utilities
-
 brew_installed() {
-    if $(command_exists 'brew');
+    if $(command_exists 'brewski');
         then echo true
     else
         echo false    
@@ -43,30 +38,40 @@ install_brew() {
         forceable_confirmation "Install Homebrew?"
         if $(is_confirmed); 
         then
-            if [[ ! $(command_exists 'gcc') ]];
-            then
-                debug "seeking confirmation for Xcode installation"
-                info "XCode is needed before Homebrew can be installed"
-                forceable_confirmation "Install XCode?"
-                if $(is_confirmed); 
-                then
-                    trace "Xcode install"
-                    xcode-select --install
-                    trace "Xcode install ended"
-                else
-                    # TODO neat exit
-                    debug "user declined installation"
-                    exit 1
-                fi
-            fi    
-            # TODO Brew Taps?
+            installXCodeCLI
             trace "Homebrew install"
             ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
             trace "Homebrew install ended"
+            trace "tapping brews"
+            tapBrews
+            trace "brews tapped"
         else
             # TODO neat exit
             debug "user declined installation"
             exit 1
         fi 
     fi
+}
+
+installXCodeCLI() {
+    if [[ ! $(command_exists 'gcc') ]];
+    then
+        debug "seeking confirmation for Xcode installation"
+        info "XCode is needed before Homebrew can be installed"
+        forceable_confirmation "Install XCode?"
+        if $(is_confirmed); 
+        then
+            trace "Xcode install"
+            xcode-select --install
+            trace "Xcode install ended"
+        else
+            # TODO neat exit
+            debug "user declined installation"
+            exit 1
+        fi
+    fi    
+}
+
+tapBrews() {
+    brew tap caskroom/cask
 }
