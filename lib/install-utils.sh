@@ -89,6 +89,7 @@ installXCodeCLI() {
 # Usage: Tap into more brews
 tapBrews() {
     brew tap caskroom/cask
+    brew tap pivotal/tap #springboot
 }
 
 # Usage: install ruby
@@ -110,7 +111,7 @@ install_ruby() {
         fi
     fi
 
-    success "RVM and Ruby are installed"
+    info "RVM and Ruby are installed"
 }
 
   function doInstall () {
@@ -216,12 +217,7 @@ install_ruby() {
           forceable_confirmation "Install ${item}?"
           if is_confirmed; then
             info "Installing ${item}"
-            elif [[ "${item}" = "tldr" ]]; then
-              brew tap tldr-pages/tldr
-              brew install tldr
-            else
-              ${INSTALLCOMMAND} "${item}"
-            fi
+            ${INSTALLCOMMAND} "${item}"
           fi
         done
       else
@@ -233,3 +229,19 @@ install_ruby() {
       fi
     fi
   }
+
+configureGit() {
+  if $(command_exists 'git'); then
+    debug "requesting git username & email"
+    local git_user_name git_user_email
+    read -p " enter your git username: " git_user_name
+    echo ""
+    read -p " enter your git email: " git_user_email
+    echo ""
+    git config --global user.name "$git_user_name"
+    git config --global user.email "$git_user_email"
+  else
+    error "git is not available, please check git installation"
+    exit 1
+  fi
+}

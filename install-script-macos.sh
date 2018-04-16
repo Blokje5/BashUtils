@@ -34,6 +34,7 @@ function installHomebrewPackages() {
         jq
         node
         sbt@1
+        springboot
         wget
     )
     doInstall
@@ -92,3 +93,6 @@ function installNPMLibraries() {
 }
 
 installNPMLibraries
+
+#Configure git
+configureGit
