@@ -3,7 +3,10 @@
 # Setup environment variables
 VERBOSITY=3 #INFO
 LOGFILE="~/.installation_logfile.txt"
-FORCED=1
+#FORCED=1
+
+#Create logfile
+touch $LOGFILE
 
 # Source utilities
 for f in $(pwd)/lib/*.sh;
@@ -29,6 +32,7 @@ function installHomebrewPackages() {
     INSTALLCOMMAND="brew install"
 
     RECIPES=(
+        p7zip
         awscli
         git
         jq
@@ -66,9 +70,6 @@ function installCaskApps() {
         visualvm
     )
 
-    # for item in "${RECIPES[@]}"; do
-    #   info "$item"
-    # done
     doInstall
 
     info "Done installing cask apps"
@@ -89,6 +90,8 @@ function installNPMLibraries() {
         @angular/cli
     )
 
+    doInstall
+
     info "Done installing npm libraries"
 }
 
@@ -96,3 +99,23 @@ installNPMLibraries
 
 #Configure git
 configureGit
+
+# Setup VSCode packages
+function installVSCodeExtensions() {
+    unset LISTINSTALLED INSTALLCOMMAND RECIPES
+
+    info "installing VS Code extensions"
+
+    LISTINSTALLED="code --list-extensions"
+    INSTALLCOMMAND="code --install-extension"
+    RECIPES=(
+        docsmsft.docs-authoring-pack
+        docsmsft.docs-markdown
+    )
+
+    doInstall
+
+    info "Done installing VS Code extensions"
+}
+
+installVSCodeExtensions

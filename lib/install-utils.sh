@@ -245,3 +245,7 @@ configureGit() {
     exit 1
   fi
 }
+
+setupDotFiles() {
+  mv $(pwd)/.dotfiles ~/.dotfiles
+}
