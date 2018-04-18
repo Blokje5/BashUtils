@@ -1,0 +1,21 @@
+#   -----------------------------
+#   1. TERMINAL QOL Changes
+#   -----------------------------
+alias gitcd="cd ~/Git"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias f='open -a Finder ./'              
+alias path='echo -e ${PATH//:/\\n}'
+
+#   ---------------------------
+#   2. NETWORKING
+#   ---------------------------
+alias edithosts="sudo code /private/etc/hosts"
+
+#   -----------------------------
+#   3. MAC SETTINGS & OPERATIONS
+#   -----------------------------
+alias finderShowHidden='defaults write com.apple.finder AppleShowAllFiles YES'
+alias finderHideHidden='defaults write com.apple.finder AppleShowAllFiles NO'
+alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"

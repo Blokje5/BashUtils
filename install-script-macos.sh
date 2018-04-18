@@ -111,6 +111,7 @@ function installVSCodeExtensions() {
     RECIPES=(
         docsmsft.docs-authoring-pack
         docsmsft.docs-markdown
+        steoates.autoimports
     )
 
     doInstall

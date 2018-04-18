@@ -231,6 +231,12 @@ install_ruby() {
   }
 
 configureGit() {
+  local directory="~/Git" # Personal preference.
+  if [ ! -d "$directory" ]; then
+    mkdir -p $directory
+  fi
+  
+  # Setup Git config  globally
   if $(command_exists 'git'); then
     debug "requesting git username & email"
     local git_user_name git_user_email
@@ -240,6 +246,8 @@ configureGit() {
     echo ""
     git config --global user.name "$git_user_name"
     git config --global user.email "$git_user_email"
+    # Git password caching
+    git config --global credential.helper osxkeychain
   else
     error "git is not available, please check git installation"
     exit 1
@@ -247,5 +255,5 @@ configureGit() {
 }
 
 setupDotFiles() {
-  mv $(pwd)/.dotfiles ~/.dotfiles
+  cp $(pwd)/.dotfiles ~/.dotfiles
 }
