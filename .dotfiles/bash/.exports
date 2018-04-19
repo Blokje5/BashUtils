@@ -1,0 +1,3 @@
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+
+export EDITOR="vim"

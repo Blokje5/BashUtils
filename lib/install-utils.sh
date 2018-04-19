@@ -264,8 +264,9 @@ setupDotFiles() {
   SOURCES_DIR=$(pwd)/.dotfiles
   for SOURCE in $(find "$SOURCES_DIR/sources" -name ".*");
   do
-    ln -sfv $SOURCE .
+    ln -sfv $SOURCE ~
   done
   debug "symlink dotfiles directory"
   ln -sfv $SOURCES_DIR ~
+  info "dotfiles linked"
 }
