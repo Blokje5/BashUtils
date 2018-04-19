@@ -261,7 +261,7 @@ configureGit() {
 setupDotFiles() {
   info "setting up dotfiles"
   debug "symlink sources directory"
-  SOURCES_DIR=$(pwd)/.dotfiles
+  local SOURCES_DIR=$(pwd)/.dotfiles
   for SOURCE in $(find "$SOURCES_DIR/sources" -name ".*");
   do
     ln -sfv $SOURCE ~
@@ -269,4 +269,14 @@ setupDotFiles() {
   debug "symlink dotfiles directory"
   ln -sfv $SOURCES_DIR ~
   info "dotfiles linked"
+}
+
+setupMacOSDefaults() {
+  info "setting up mac defaults"
+  local SOURCES_DIR=$(pwd)/.dotfiles
+  for MACOS_DEFAUTLS_FILE in $(find "$SOURCES_DIR/macos" -name "*.sh");
+  do
+    source $MACOS_DEFAUTLS_FILE
+  done
+  info "Finished setting up MACOS Defaults file"
 }

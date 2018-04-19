@@ -17,10 +17,23 @@ done;
 info "Running maintenance on brew and dotfiles"
 
 # Assume git is setup in this directory
-git pull
+if $(command_exists 'git'); then
+    git pull origin master
 
-# Run brew maintenance
-brewMaintenance
+    # Update App Store apps
+    sudo softwareupdate -i -a
 
-# Setup dotfiles
-setupDotFiles
+    # Update npm & packages
+    npm install npm -g
+    npm update -g
+
+    # Update Ruby & gems
+    sudo gem update —system
+    sudo gem update
+
+    # Run brew maintenance
+    brewMaintenance
+
+    # Setup dotfiles
+    setupDotFiles
+fi

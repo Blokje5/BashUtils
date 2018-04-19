@@ -123,3 +123,6 @@ installVSCodeExtensions
 
 # Setup DotFiles
 setupDotFiles
+
+# Setup Basic Mac Defaults
+setupMacOSDefaults
