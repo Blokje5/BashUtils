@@ -3,7 +3,7 @@
 # Setup environment variables
 VERBOSITY=3 #INFO
 LOGFILE="~/.installation_logfile.txt"
-#FORCED=1
+FORCED=1
 
 #Create logfile
 touch $LOGFILE
