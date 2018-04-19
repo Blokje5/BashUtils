@@ -7,6 +7,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias f='open -a Finder ./'              
 alias path='echo -e ${PATH//:/\\n}'
+alias ll='ls -FGlAhp'
 
 #   ---------------------------
 #   2. NETWORKING

@@ -231,8 +231,10 @@ install_ruby() {
   }
 
 configureGit() {
+  info "configuring Git settings"
   local directory="~/Git" # Personal preference.
   if [ ! -d "$directory" ]; then
+    debug "Git directory made"
     mkdir -p $directory
   fi
   
@@ -244,10 +246,12 @@ configureGit() {
     echo ""
     read -p " enter your git email: " git_user_email
     echo ""
+    debug "Setting git config"
     git config --global user.name "$git_user_name"
     git config --global user.email "$git_user_email"
     # Git password caching
     git config --global credential.helper osxkeychain
+    info "Git is configured"
   else
     error "git is not available, please check git installation"
     exit 1
@@ -255,5 +259,13 @@ configureGit() {
 }
 
 setupDotFiles() {
-  cp $(pwd)/.dotfiles ~/.dotfiles
+  info "setting up dotfiles"
+  debug "symlink sources directory"
+  SOURCES_DIR=$(pwd)/.dotfiles
+  for SOURCE in $(find "$SOURCES_DIR/sources" -name ".*");
+  do
+    ln -sfv $SOURCE .
+  done
+  debug "symlink dotfiles directory"
+  ln -sfv $SOURCES_DIR ~
 }

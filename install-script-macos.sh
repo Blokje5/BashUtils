@@ -120,3 +120,6 @@ function installVSCodeExtensions() {
 }
 
 installVSCodeExtensions
+
+# Setup DotFiles
+setupDotFiles
