@@ -1,0 +1,23 @@
+[user]
+  name = Lennard Eijsackers
+  email = lennardeijsackers92@gmail.com
+
+[github]
+  user = Blokje5
+
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = vim
+
+[alias]
+  a. = add .
+  amend = commit --amend --no-edit
+  br = branch
+  ci = commit
+  p = push
+  pf = push --force
+  st = status
+  unstage = reset --hard HEAD
+
+[credential]
+  helper = osxkeychain

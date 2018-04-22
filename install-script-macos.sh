@@ -97,9 +97,6 @@ function installNPMLibraries() {
 
 installNPMLibraries
 
-#Configure git
-configureGit
-
 # Setup VSCode packages
 function installVSCodeExtensions() {
     unset LISTINSTALLED INSTALLCOMMAND RECIPES
@@ -112,6 +109,7 @@ function installVSCodeExtensions() {
         docsmsft.docs-authoring-pack
         docsmsft.docs-markdown
         steoates.autoimports
+        eg2.tslint
     )
 
     doInstall
