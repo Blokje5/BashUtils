@@ -43,10 +43,10 @@ log() {
         local logmessage=$(__log_format $1 "${__message}")
         #if LOGFILE is not empty or space, append
         if $(is_string_non_empty $LOGFILE); 
-            then echo -e  $logmessage >> $LOGFILE
+            then echo -e  $logmessage'\n' >> $LOGFILE
         else
             # to stdout
-            echo -e $logmessage >&1
+            echo -e $logmessage'\n' >&1
         fi
     fi
 }

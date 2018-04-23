@@ -57,7 +57,7 @@ seek_confirmation() {
 forceable_confirmation() {
     if $(is_var_set $FORCED); 
     then
-        echo true
+        user_reply=y
     else
         seek_confirmation "$@"
     fi        
