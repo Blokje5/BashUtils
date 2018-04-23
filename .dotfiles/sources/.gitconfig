@@ -10,7 +10,7 @@
   editor = vim
 
 [alias]
-  a. = add .
+  ad = add .
   amend = commit --amend --no-edit
   br = branch
   ci = commit
