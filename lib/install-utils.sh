@@ -211,11 +211,11 @@ install_ruby() {
 
     if [ ${#list[@]} -gt 0 ]; then
       forceable_confirmation "Confirm each package before installing?"
-      if is_confirmed; then
+      if $(is_confirmed); then
         for item in "${list[@]}"; do
           checkInstallItems
           forceable_confirmation "Install ${item}?"
-          if is_confirmed; then
+          if $(is_confirmed); then
             info "Installing ${item}"
             ${INSTALLCOMMAND} "${item}"
           fi
