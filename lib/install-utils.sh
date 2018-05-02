@@ -90,6 +90,7 @@ installXCodeCLI() {
 tapBrews() {
     brew tap caskroom/cask
     brew tap pivotal/tap #springboot
+    brew tap caskroom/versions #java 8
 }
 
 # Usage: install ruby

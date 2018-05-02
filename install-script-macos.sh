@@ -35,6 +35,7 @@ function installHomebrewPackages() {
         p7zip
         awscli
         git
+        gource
         jq
         node
         sbt@1
@@ -64,8 +65,11 @@ function installCaskApps() {
         intellij-idea
         iterm2
         java
+        java8
         postman
         python
+        slack
+        spotify
         visual-studio-code
         visualvm
     )
