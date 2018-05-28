@@ -1,6 +1,21 @@
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
+# Java
+# See: https://www.mkyong.com/java/how-to-set-java_home-environment-variable-on-mac-os-x/
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Only needed for Android Development
+export ANDROID_HOME=/Users/lennardeijsackers/Library/Android/sdk
+
+# Add Android tools to PATH
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+# Add pip packages
+export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 export EDITOR="vim"
+
+

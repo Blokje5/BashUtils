@@ -36,8 +36,13 @@ function installHomebrewPackages() {
         awscli
         git
         gource
+        gradle
+        httpie
         jq
+        maven
+        mysql
         node
+        python
         sbt@1
         springboot
         wget
@@ -58,6 +63,7 @@ function installCaskApps() {
     LISTINSTALLED="brew cask list"
     INSTALLCOMMAND="brew cask install --appdir=/Applications"
     RECIPES=(
+        android-sdk
         docker
         firefox
         flux
@@ -68,6 +74,7 @@ function installCaskApps() {
         java8
         postman
         python
+        sequel-pro
         slack
         spotify
         visual-studio-code
