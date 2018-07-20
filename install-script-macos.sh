@@ -33,6 +33,7 @@ function installHomebrewPackages() {
 
     RECIPES=(
         p7zip
+        apache-spark
         awscli
         git
         gource
@@ -40,11 +41,13 @@ function installHomebrewPackages() {
         httpie
         jq
         maven
+        mongodb
         mysql
         node
         python
         sbt@1
         springboot
+        terraform
         wget
     )
     doInstall
@@ -72,6 +75,7 @@ function installCaskApps() {
         iterm2
         java
         java8
+        macdown
         postman
         python
         sequel-pro
@@ -99,6 +103,7 @@ function installNPMLibraries() {
     RECIPES=(
         typescript
         @angular/cli
+        raml2html
     )
 
     doInstall

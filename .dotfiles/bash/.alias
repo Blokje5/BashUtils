@@ -20,3 +20,9 @@ alias edithosts="sudo code /private/etc/hosts"
 alias finderShowHidden='defaults write com.apple.finder AppleShowAllFiles YES'
 alias finderHideHidden='defaults write com.apple.finder AppleShowAllFiles NO'
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
+
+#   ---------------------------
+#   4. CLOUD
+#   ---------------------------
+alias awsConfig="code ~/.aws"
+

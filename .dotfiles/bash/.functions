@@ -24,3 +24,14 @@ extract () {
     }
 # Usage zipfolder "folder"
 zipfolder () { zip -r "$1".zip "$1" ; }      
+
+#   ---------------------------
+#   2. NETWORKING
+#   ---------------------------
+findPortProcess() { lsof -n -i :"$1" | grep LISTEN ; }
+
+#   ---------------------------
+#   3. CONTAINERS
+#   ---------------------------
+dockerStop() { docker stop $(docker ps -a -q) ; }
+dockerRemove() { docker rm $(docker ps -a -q) ; }
